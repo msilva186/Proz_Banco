@@ -2,7 +2,7 @@
 --USE LojaDB;
 
 --CREATE TABLE Clientes (
---    id_cliente INT identity PRIMARY KEY,
+--    id_cliente INT IDENTITY PRIMARY KEY,
 --    nome_cliente VARCHAR(100) NOT NULL,
 --    email_cliente VARCHAR(100) NOT NULL,
 --    telefone_cliente VARCHAR(15)
@@ -14,7 +14,7 @@
 --    ('Maria Oliveira', 'maria@exemplo.com', '9876542356');
 
 --CREATE TABLE Produtos (
---    id_produto INT identity PRIMARY KEY,
+--    id_produto INT IDENTITY PRIMARY KEY,
 --    nome_produto VARCHAR(100) NOT NULL,
 --    preco DECIMAL(10, 2) NOT NULL,
 --    quantidade_estoque INT NOT NULL
@@ -27,7 +27,7 @@
 
 
 --CREATE TABLE Pedidos (
---    id_pedido INT identity PRIMARY KEY,
+--    id_pedido INT IDENTITY PRIMARY KEY,
 --    id_cliente INT,
 --    data_pedido DATE NOT NULL,
 --    total DECIMAL(10, 2) NOT NULL,
@@ -41,7 +41,7 @@
 --------------------------------------------------------------------------
 
 --CREATE TABLE ItensPedido (
---    id_item INT identity PRIMARY KEY,
+--    id_item INT IDENTITY PRIMARY KEY,
 --    id_pedido INT,
 --    id_produto INT,
 --    quantidade INT NOT NULL,
