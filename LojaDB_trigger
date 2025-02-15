@@ -1,0 +1,72 @@
+--CREATE DATABASE LojaDB trigger;
+--USE LojaDB;
+
+--CREATE TABLE Clientes (
+--    id_cliente INT identity PRIMARY KEY,
+--    nome_cliente VARCHAR(100) NOT NULL,
+--    email_cliente VARCHAR(100) NOT NULL,
+--    telefone_cliente VARCHAR(15)
+--);
+
+--INSERT INTO Clientes (nome_cliente, email_cliente, telefone_cliente)
+--VALUES 
+--    ('Mauricio Silva', 'mauricio@exemplo.com', '123123123'),
+--    ('Maria Oliveira', 'maria@exemplo.com', '9876542356');
+
+--CREATE TABLE Produtos (
+--    id_produto INT identity PRIMARY KEY,
+--    nome_produto VARCHAR(100) NOT NULL,
+--    preco DECIMAL(10, 2) NOT NULL,
+--    quantidade_estoque INT NOT NULL
+--);
+
+--INSERT INTO Produtos (nome_produto, preco, quantidade_estoque)
+--VALUES 
+--    ('Produto A', 100.00, 200),
+--    ('Produto B', 150.00, 300);
+
+
+--CREATE TABLE Pedidos (
+--    id_pedido INT identity PRIMARY KEY,
+--    id_cliente INT,
+--    data_pedido DATE NOT NULL,
+--    total DECIMAL(10, 2) NOT NULL,
+--    FOREIGN KEY (id_cliente) REFERENCES Clientes(id_cliente)
+--);
+
+--INSERT INTO Pedidos (id_cliente, data_pedido, total)
+--VALUES
+--    (1, '2025-02-09', 2000.00),
+--    (2, '2025-02-14', 150.00);
+--------------------------------------------------------------------------
+
+--CREATE TABLE ItensPedido (
+--    id_item INT identity PRIMARY KEY,
+--    id_pedido INT,
+--    id_produto INT,
+--    quantidade INT NOT NULL,
+--    FOREIGN KEY (id_pedido) REFERENCES Pedidos(id_pedido),
+--    FOREIGN KEY (id_produto) REFERENCES Produtos(id_produto)
+--);
+---------------------------------------------------------------------------
+
+-- Criação da trigger para atualizar o estoque após a inserção de um item no pedido
+--CREATE TRIGGER AtualizarEstoque
+--ON ItensPedido
+--FOR INSERT 
+--AS
+--BEGIN
+--    -- Atualiza o estoque subtraindo a quantidade comprada
+--    UPDATE Produtos 
+--	SET quantidade_estoque = quantidade_estoque - quantidade
+--	FROM ItensPedido a
+--	join produtos on produtos.id_produto = a.id_produto
+--	WHERE produtos.id_produto =a.id_produto;
+--END 
+-------------------------------------------------------------------------
+-- Verificar o estoque após a inserção
+--INSERT INTO ItensPedido (id_pedido, id_produto, quantidade)
+--VALUES (1, 1, 2);  -- Cliente 1 comprou 2 unidades do Produto A
+
+---- Verificar o estoque após a inserção
+--SELECT nome_produto, quantidade_estoque FROM Produtos WHERE id_produto = 1;
