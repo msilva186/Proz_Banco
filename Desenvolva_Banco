@@ -1,0 +1,109 @@
+--CREATE DATABASE Loja;
+--USE Loja;
+
+-- 1. Tabela Clientes
+
+--CREATE TABLE Clientes (
+--    id_cliente INT IDENTITY PRIMARY KEY,
+--    nome_cliente VARCHAR(100) NOT NULL,
+--    email_cliente VARCHAR(100) NOT NULL,
+--    telefone_cliente VARCHAR(15)
+--);
+
+--INSERT INTO Clientes (nome_cliente, email_cliente, telefone_cliente)
+--VALUES
+--    ('Mauricio Silva', 'mauricio@exemplo.com', '123456789'),
+--    ('Maria Oliveira', 'maria@exemplo.com', '988866599'),
+--    ('Carlos Souza', 'carlos@exemplo.com', '555555555');
+
+
+-- 2. Tabela Produtos
+--CREATE TABLE Produtos (
+--    id_produto INT identity PRIMARY KEY,
+--    nome_produto VARCHAR(100) NOT NULL,
+--    preco DECIMAL(10, 2) NOT NULL,
+--    quantidade_estoque INT NOT NULL
+--);
+
+--INSERT INTO Produtos (nome_produto, preco, quantidade_estoque)
+--VALUES
+--    ('Produto A', 100.00, 150),
+--    ('Produto B', 50.00, 230),
+--    ('Produto C', 80.00, 250);
+
+
+-- 3. Tabela Pedidos
+--CREATE TABLE Pedidos (
+--    id_pedido INT IDENTITY PRIMARY KEY,
+--    id_cliente INT,
+--    data_pedido DATE NOT NULL,
+--    total DECIMAL(10, 2) NOT NULL,
+--    FOREIGN KEY (id_cliente) REFERENCES Clientes(id_cliente)
+--);
+
+--INSERT INTO Pedidos (id_cliente, data_pedido, total)
+--VALUES
+--    (1, '2025-02-12', 190.00),
+--    (2, '2025-02-10', 150.00),
+--    (3, '2025-02-14', 280.00);
+
+
+-- 4. Tabela ItensPedido
+
+--CREATE TABLE ItensPedido (
+--    id_item INT IDENTITY PRIMARY KEY,
+--    id_pedido INT,
+--    id_produto INT,
+--    quantidade INT NOT NULL,
+--    preco_unitario DECIMAL(10, 2) NOT NULL,
+--    FOREIGN KEY (id_pedido) REFERENCES Pedidos(id_pedido),
+--    FOREIGN KEY (id_produto) REFERENCES Produtos(id_produto)
+--);
+
+--INSERT INTO ItensPedido (id_pedido, id_produto, quantidade, preco_unitario)
+--VALUES
+--    (1, 1, 2, 50.00),  -- Mauricio Silva comprou 2 unidades do Produto A
+--    (1, 2, 1, 30.00),  -- Mauricio Silva comprou 1 unidade do Produto B
+--    (2, 2, 3, 30.00),  -- Maria Oliveira comprou 3 unidades do Produto B
+--    (3, 1, 1, 50.00),  -- Carlos Souza comprou 1 unidade do Produto A
+--    (3, 3, 2, 70.00);  -- Carlos Souza comprou 2 unidades do Produto C
+
+-------------------------------------------------------------------------------
+--SELECT 
+--    Pedidos.id_pedido,
+--    Clientes.nome_cliente,
+--    Produtos.nome_produto,
+--    ItensPedido.quantidade,
+--    ItensPedido.preco_unitario
+--FROM 
+--    Pedidos
+--JOIN 
+--    Clientes ON Pedidos.id_cliente = Clientes.id_cliente
+--JOIN 
+--    ItensPedido ON Pedidos.id_pedido = ItensPedido.id_pedido
+--JOIN 
+--    Produtos ON ItensPedido.id_produto = Produtos.id_produto;
+--------------------------------------------------------------------------------------------
+--SELECT 
+--    Produtos.nome_produto,
+--    SUM(ItensPedido.quantidade * ItensPedido.preco_unitario) AS total_vendas
+--FROM 
+--    ItensPedido
+--JOIN 
+--    Produtos ON ItensPedido.id_produto = Produtos.id_produto
+--GROUP BY 
+--    Produtos.nome_produto;
+------------------------------------------------------------------------------------------
+--SELECT 
+--    Pedidos.id_pedido,
+--    Pedidos.data_pedido,
+--    Pedidos.total
+--FROM 
+--    Pedidos
+--JOIN 
+--    Clientes ON Pedidos.id_cliente = Clientes.id_cliente
+--WHERE 
+--    Clientes.id_cliente = 1;
+
+
+
