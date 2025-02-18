@@ -1,0 +1,40 @@
+--CREATE TABLE produtos (
+--    id_produto INT PRIMARY KEY,
+--    nome_produto VARCHAR(255)
+--);
+
+--CREATE TABLE compras (
+--    id_compra INT PRIMARY KEY,
+--    data_compra DATE
+--);
+
+--CREATE TABLE detalhes_compra (
+--    id_detalhe INT PRIMARY KEY,
+--    id_compra INT,
+--    id_produto INT,
+--    quantidade INT,
+--    FOREIGN KEY (id_compra) REFERENCES compras(id_compra),
+--    FOREIGN KEY (id_produto) REFERENCES produtos(id_produto)
+--);
+---------------------------------------------------------------
+
+--CREATE PROCEDURE Relatorio_Diario_Compras(@id_produto int)
+--As
+
+--BEGIN
+	
+--    SELECT 
+--        c.data_compra,
+--        p.nome_produto,
+--        SUM(dc.quantidade) AS quantidade_comprada
+--    FROM 
+--        compras c
+--    JOIN 
+--        detalhes_compra dc ON c.id_compra = dc.id_compra
+--    JOIN 
+--        produtos p  ON dc.id_produto = @id_produto
+--    GROUP BY 
+--        c.data_compra, p.nome_produto
+--    ORDER BY 
+--        c.data_compra, p.nome_produto;
+--END
