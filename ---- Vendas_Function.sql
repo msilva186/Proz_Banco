@@ -45,7 +45,7 @@
 	-- Inserir Vendas
 --INSERT INTO Vendas (ClienteID, ProdutoID, Quantidade, DataVenda)
 --VALUES
---    (1, 2, 1, '2025-03-20T10:00:00'),  -- MAuricio comprou 1 Calça Jeans
+--    (1, 2, 1, '2025-03-20T10:00:00'),  -- Mauricio comprou 1 Calça Jeans
 --    (2, 1, 2, '2025-03-20T11:00:00'),  -- Marta comprou 2 Camisetas Polo
 --    (3, 3, 1, '2025-03-20T12:00:00'),  -- Rodrigo comprou 1 Tênis Esportivo
 --    (4, 4, 1, '2025-03-21T16:00:00'),  -- Fernanda comprou 1 Jaqueta de Couro
