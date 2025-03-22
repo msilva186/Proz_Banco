@@ -28,7 +28,7 @@
 --INSERT INTO Clientes (Nome, Email, DataCadastro)
 --VALUES
 --    ('Mauricio Silva', 'mauricio.silva@email.com', '2025-03-20T09:15:00'),
---    ('Marta Oliveira', 'Marta.oliveira@email.com', '2025-03-20T10:30:00'),
+--    ('Marta Oliveira', 'marta.oliveira@email.com', '2025-03-20T10:30:00'),
 --    ('Rodrigo Souza', 'rodrigo.souza@email.com', '2025-03-20T11:45:00'),
 --    ('Fernanda Costa', 'fernanda.costa@email.com', '2025-03-21T14:00:00'),
 --    ('Lucas Pereira', 'lucas.pereira@email.com', '2025-03-21T15:10:00');
